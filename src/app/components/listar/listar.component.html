@@ -2,8 +2,7 @@
   @for (user of usuarios; track user.id) {
   <div class="user-card">
     <h3>{{ user.username }}</h3>
+    <a [routerLink]="['/users', user.id]">Ver detalhes do usuário</a>
   </div>
-  }
+    }
 </section>
-<p>teste</p>
-<a routerLink="/nova-pagina">nova pagina</a>

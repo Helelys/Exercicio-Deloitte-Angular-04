@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ExibirComponent } from '../exibir/exibir.component'; // Adicione esta linha
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-listar',
   standalone: true,
-  imports: [ExibirComponent], // Adicione ExibirComponent aqui
+  imports: [RouterModule], // Adicione RouterModule aqui
   templateUrl: './listar.component.html',
   styleUrl: './listar.component.scss',
 })

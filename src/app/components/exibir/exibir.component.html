@@ -1,8 +1,15 @@
-<div>
+<div class="container">
   <div class="user-card">
-    <p>Nome: {{nome}}</p>
-    <p>Email: {{email}}</p>
-    <p>Phone: {{phone}}</p>
-    <p>Website: <a href="#" target="_blank" rel="noopener noreferrer">{{website}}</a></p>
+    <div class="centralizar">
+      <p>{{user?.name}}</p>
+    </div>
+    <div class="itens">
+      <div class="itens__container">
+      <p>Email: {{user?.email}}</p>
+      <p>Phone: {{user?.phone}}</p>
+      <p>Website: <a href="http://{{user?.website}}" target="_blank" rel="noopener noreferrer">{{user?.website}}</a></p>
+      </div>
+      <a routerLink="/">Voltar</a>
+    </div>
   </div>
 </div>

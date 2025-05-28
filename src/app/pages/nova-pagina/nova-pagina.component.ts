@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { ExibirComponent } from '../../components/exibir/exibir.component';
-import { UsuarioService } from '../../services/usuarios-service.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nova-pagina',
-  imports: [ExibirComponent],
+  standalone: true,
+  imports: [ExibirComponent, CommonModule],
   templateUrl: './nova-pagina.component.html',
   styleUrl: './nova-pagina.component.scss',
 })
 export class NovaPaginaComponent implements OnInit {
-  usuarios: any[] = [];
+  user: any;
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
-    this.usuarioService.getUsuarios().subscribe((data) => {
-      this.usuarios = data;
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.http.get<any>(`${this.apiUrl}/${id}`).subscribe((data) => {
+        this.user = data;
+      });
     });
   }
 }
