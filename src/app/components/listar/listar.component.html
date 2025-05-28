@@ -2,19 +2,8 @@
   @for (user of usuarios; track user.id) {
   <div class="user-card">
     <h3>{{ user.username }}</h3>
-    <button (click)="ativarExibirPorId(user.id)">
-      {{ usuarioExibidoId === user.id ? "Ocultar" : "Exibir" }}
-    </button>
-    @if (usuarioExibidoId === user.id) {
-    <app-exibir
-      class="user-details"
-      nome="{{ user.username }}"
-      email="{{ user.email }}"
-      phone="{{ user.phone }}"
-      website="{{ user.website }}"
-    >
-    </app-exibir>
-    }
   </div>
   }
 </section>
+<p>teste</p>
+<a routerLink="/nova-pagina">nova pagina</a>

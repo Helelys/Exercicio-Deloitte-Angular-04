@@ -1,0 +1,9 @@
+<section>
+  @for (user of usuarios; track user.id) {
+    <app-exibir class="user-card">
+      <p>{{ user.email }}</p>
+      <p>{{ user.phone }}</p>
+      <p>{{ user.website }}</p>
+    </app-exibir>
+  }
+</section>
