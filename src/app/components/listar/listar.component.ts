@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ExibirComponent } from '../exibir/exibir.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listar',
   standalone: true,
-  imports: [],
+  imports: [ExibirComponent, CommonModule],
   templateUrl: './listar.component.html',
   styleUrl: './listar.component.scss'
 })
 export class ListarComponent {
 
   private apiUrl = 'https://jsonplaceholder.typicode.com/users';
-  usuarios: any;
+  usuarios: any[] = [];
+  usuarioExibidoId: number | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -23,11 +26,10 @@ export class ListarComponent {
   }
 
   getUsers(): Observable<any> {
-    this.usuarios = this.http.get<any[]>(this.apiUrl);
-    return this.usuarios;
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  getUserById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  ativarExibirPorId(id: number) {
+    this.usuarioExibidoId = this.usuarioExibidoId === id ? null : id;
   }
 }
